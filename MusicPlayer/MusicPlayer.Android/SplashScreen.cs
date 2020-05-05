@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace MusicPlayer.Droid
 {
-    [Activity(Label = "MusicPlayer", MainLauncher = true, NoHistory = true, Theme = "@style/MyTheme.Splash")]
+    [Activity(Label = "MusicPlayer", MainLauncher = false, NoHistory = true, Theme = "@style/MyTheme.Splash")]
     public class SplashScreen : Activity, Android.Animation.Animator.IAnimatorListener
     {
         public void OnAnimationCancel(Animator animation)

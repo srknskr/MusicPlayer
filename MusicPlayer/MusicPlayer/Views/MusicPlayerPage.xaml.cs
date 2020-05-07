@@ -1,23 +1,20 @@
-﻿using MusicPlayer.Views;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Xamarin.Essentials;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace MusicPlayer
+namespace MusicPlayer.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AppShell : Shell
+    public partial class MusicPlayerPage : ContentPage
     {
-        public AppShell()
+        public MusicPlayerPage()
         {
-            
             InitializeComponent();
         }
-        Dictionary<string, Type> routes = new Dictionary<string, Type>();
     }
 }

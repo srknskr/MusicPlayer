@@ -24,7 +24,12 @@
             <Style BasedOn="{StaticResource BaseStyle}" TargetType="TabBar" />
         </ResourceDictionary>
     </Shell.Resources>
-    <TabBar>
+    <TabBar >
+        <!--<Tab Title="Player" Icon="disc.png" >
+            <ShellContent>
+                <local1:PlayerPage />
+            </ShellContent>
+        </Tab>-->
         <Tab Title="All Songs" Icon="home.png">
             <ShellContent>
                 <local1:HomePage />

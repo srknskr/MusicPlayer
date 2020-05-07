@@ -11,10 +11,10 @@
 
 
     <com.airbnb.lottie.LottieAnimationView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:id="@+id/animation_view"
-        app:lottie_fileName="5853-play-music.json" 
+        app:lottie_fileName="10008-music-note-character.json" 
         app:lottie_autoPlay="true"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"

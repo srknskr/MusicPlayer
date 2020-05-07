@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             mc:Ignorable="d"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="MusicPlayer.Views.PlayerPage"
+             Title="Player">
+
+
+
+
+    <pv:PancakeView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundGradientAngle="180">
+        <pv:PancakeView.BackgroundGradientStops>
+            <pv:GradientStopCollection>
+                <pv:GradientStop Color="White" Offset="0" />
+                <pv:GradientStop Color="White" Offset="1" />
+            </pv:GradientStopCollection>
+        </pv:PancakeView.BackgroundGradientStops>
+        
+        
+        
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/> 
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            
+            
+            
+            
+            
+            
+            
+            <!--<Grid Margin="20" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                
+                
+                --><!--<pv:PancakeView HasShadow="True" HeightRequest="40" WidthRequest="40" CornerRadius="20" HorizontalOptions="End" 
+                            VerticalOptions="Center" BackgroundGradientAngle="180">
+                    <pv:PancakeView.BackgroundGradientStops>
+                        <pv:GradientStopCollection>
+                            <pv:GradientStop Color="White" Offset="0" />
+                            <pv:GradientStop Color="White" Offset="1" />
+                        </pv:GradientStopCollection>
+                    </pv:PancakeView.BackgroundGradientStops>
+                    <pv:PancakeView.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                    </pv:PancakeView.GestureRecognizers>
+                    <Image Source="leftarrow.png" HeightRequest="15" WidthRequest="15" HorizontalOptions="Center" VerticalOptions="Center"/>
+                </pv:PancakeView>-->
+                
+                
+                <!--<Label Grid.Column="1" Text="NOW PLAYING" TextColor="Black" FontSize="12" Opacity="0.5" HorizontalOptions="Center" VerticalOptions="Center"/>-->
+                
+                
+                
+                <!--<pv:PancakeView Grid.Column="2" HasShadow="True" HeightRequest="40" WidthRequest="40" CornerRadius="20" HorizontalOptions="End" 
+                            VerticalOptions="Center" BackgroundGradientAngle="180">
+                    <pv:PancakeView.BackgroundGradientStops>
+                        <pv:GradientStopCollection>
+                            <pv:GradientStop Color="#7175D8" Offset="0" />
+                            <pv:GradientStop Color="#7175D8" Offset="1" />
+                        </pv:GradientStopCollection>
+                    </pv:PancakeView.BackgroundGradientStops>
+                    <pv:PancakeView.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ShareCommand}"/>
+                    </pv:PancakeView.GestureRecognizers>
+                    <Image Source="share1.png" HeightRequest="15" WidthRequest="15" HorizontalOptions="Center" VerticalOptions="Center"/>
+                </pv:PancakeView>--><!--
+            </Grid>-->
+            
+            
+            
+            
+            
+            
+            
+            
+            <StackLayout Grid.Row="1" Spacing="25" HorizontalOptions="Center" VerticalOptions="Center">
+                <pv:PancakeView HasShadow="True" BackgroundColor="#7175D8" HeightRequest="250" WidthRequest="250" CornerRadius="10" HorizontalOptions="Center" VerticalOptions="Center" >
+                    <pv:PancakeView BackgroundColor="#7175D8" HeightRequest="248" WidthRequest="248" CornerRadius="10" HorizontalOptions="Center" VerticalOptions="Center">
+                        <Image Source="{Binding SelectedMusic.AlbumImageUri}" Aspect="AspectFill" HeightRequest="250" WidthRequest="250" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </pv:PancakeView>
+                </pv:PancakeView>
+               
+            </StackLayout>
+
+
+
+
+
+            <StackLayout Grid.Row="2" HorizontalOptions="Center">
+                <StackLayout>
+                    <Label Text="{Binding SelectedMusic.Title}" TextColor="Black" FontSize="25" HorizontalOptions="Center"/>
+                    <Label Text="{Binding SelectedMusic.Artist}" TextColor="#7175D8" FontSize="15" Opacity="0.5" HorizontalOptions="Center"/>
+                </StackLayout>
+            </StackLayout>
+
+
+
+            <StackLayout WidthRequest="250"  Grid.Row="3" HorizontalOptions="Center">
+                
+                <Grid HorizontalOptions="FillAndExpand">
+                    
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Label Grid.Column="0" Text="{Binding Position, StringFormat='{0:mm\\:ss}'}" FontSize="12" HorizontalOptions="Start" VerticalOptions="Center"/>
+                    <Slider Grid.Column="1" MinimumTrackColor="#7175D8" MaximumTrackColor="#7175D8" ThumbColor="#7175D8" Value="{Binding Position.TotalSeconds}" Maximum="{Binding Maximum}" HorizontalOptions="FillAndExpand"/>
+                    <Label Grid.Column="2" Text="{Binding Duration, StringFormat='{0:mm\\:ss}'}" FontSize="12" HorizontalOptions="End" VerticalOptions="Center"/>
+                </Grid>
+            </StackLayout>
+
+
+
+
+            <StackLayout Grid.Row="4" Spacing="0"  HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
+                
+                
+               
+                
+                
+                <StackLayout Orientation="Horizontal" Spacing="20" HorizontalOptions="Center">
+
+                   
+                    <pv:PancakeView HasShadow="True" HeightRequest="40" WidthRequest="40" CornerRadius="20"  HorizontalOptions="End" 
+                            VerticalOptions="Center" BackgroundGradientAngle="180">
+                        <pv:PancakeView.BackgroundGradientStops>
+                            <pv:GradientStopCollection>
+                                <pv:GradientStop Color="#E3E7EE" Offset="0" />
+                                <pv:GradientStop Color="#FBFBFB" Offset="1" />
+                            </pv:GradientStopCollection>
+                        </pv:PancakeView.BackgroundGradientStops>
+                        <pv:PancakeView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                        </pv:PancakeView.GestureRecognizers>
+                        <Image Source="repeat.png" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </pv:PancakeView>
+
+                    <pv:PancakeView  HasShadow="True" HeightRequest="50" WidthRequest="50" CornerRadius="30" HorizontalOptions="Center" 
+                            VerticalOptions="Center" BackgroundGradientAngle="180">
+                        <pv:PancakeView.BackgroundGradientStops>
+                            <pv:GradientStopCollection>
+                                <pv:GradientStop Color="White" Offset="0" />
+                                <pv:GradientStop Color="#7175D8" Offset="1" />
+                            </pv:GradientStopCollection>
+                        </pv:PancakeView.BackgroundGradientStops>
+                        <pv:PancakeView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ChangeCommand}" CommandParameter="P"/>
+                        </pv:PancakeView.GestureRecognizers>
+                        <Image Source="leftarrow.png" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </pv:PancakeView>
+                    
+                    
+                    <pv:PancakeView HasShadow="True" HeightRequest="75" WidthRequest="75" CornerRadius="40" HorizontalOptions="Center" 
+                            VerticalOptions="Center" BackgroundGradientAngle="180">
+                        <pv:PancakeView.BackgroundGradientStops>
+                            <pv:GradientStopCollection> 
+                                <pv:GradientStop Color="White" Offset="0" />
+                                <pv:GradientStop Color="#7175D8" Offset="1" />
+                            </pv:GradientStopCollection>
+                        </pv:PancakeView.BackgroundGradientStops>
+                        <pv:PancakeView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding PlayCommand}"/>
+                        </pv:PancakeView.GestureRecognizers>
+                        <Image Source="{Binding PlayIcon}" HeightRequest="75" WidthRequest="75" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </pv:PancakeView>
+
+
+
+                    <pv:PancakeView HasShadow="True" HeightRequest="50" WidthRequest="50" CornerRadius="30" HorizontalOptions="Center" 
+                            VerticalOptions="Center" BackgroundGradientAngle="180">
+                        <pv:PancakeView.BackgroundGradientStops>
+                            <pv:GradientStopCollection>
+                                <pv:GradientStop Color="White" Offset="0" />
+                                <pv:GradientStop Color="#7175D8" Offset="1" />
+                            </pv:GradientStopCollection>
+                        </pv:PancakeView.BackgroundGradientStops>
+                        <pv:PancakeView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ChangeCommand}" CommandParameter="N"/>
+                        </pv:PancakeView.GestureRecognizers>
+                        <Image Source="next.png" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </pv:PancakeView>
+
+                    <pv:PancakeView Grid.Column="2" HasShadow="True" HeightRequest="40" WidthRequest="40" CornerRadius="20" HorizontalOptions="End" 
+                            VerticalOptions="Center" BackgroundGradientAngle="180">
+                        <pv:PancakeView.BackgroundGradientStops>
+                            <pv:GradientStopCollection>
+                                <pv:GradientStop Color="#E3E7EE" Offset="0" />
+                                <pv:GradientStop Color="#FBFBFB" Offset="1" />
+                            </pv:GradientStopCollection>
+                        </pv:PancakeView.BackgroundGradientStops>
+                        <pv:PancakeView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ShareCommand}"/>
+                        </pv:PancakeView.GestureRecognizers>
+                        <Image Source="share.png" HeightRequest="40" WidthRequest="40" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </pv:PancakeView>
+                    
+                </StackLayout>
+                
+                
+                
+            </StackLayout>
+            
+            
+            
+            
+            
+            
+        </Grid>
+    </pv:PancakeView>
+
+    
+    
+</ContentPage>

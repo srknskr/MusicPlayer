@@ -30,25 +30,30 @@
                 <local1:PlayerPage />
             </ShellContent>
         </Tab>-->
-        <Tab Title="All Songs" Icon="home.png">
+
+        
+        
+        <!--<Tab Title="All Songs" Icon="home.png">
             <ShellContent>
                 <local1:HomePage />
             </ShellContent>
+        </Tab>-->
+        
+       
+        
+        <Tab Title="Artists" Icon="microphone.png">
+            <ShellContent>
+                <local1:ArtistsPage />
+            </ShellContent>
         </Tab>
-        <Tab Title="Albums" Icon="checkbox.png">
+        <Tab Title="Albums" Icon="disc.png">
             <ShellContent>
                 <local1:AlbumsPage />
             </ShellContent>
         </Tab>
-        <Tab Title="Favourites" Icon="star.png">
+        <Tab Title="Profile" Icon="user.png">
             <ShellContent>
-                <local1:FavouritesPage />
-            </ShellContent>
-        </Tab>
-
-        <Tab Title="More" Icon="info.png">
-            <ShellContent>
-                <local1:InfoPage />
+                <local1:ProfilePage />
             </ShellContent>
         </Tab>
     </TabBar>

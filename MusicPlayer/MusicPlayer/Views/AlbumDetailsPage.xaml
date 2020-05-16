@@ -8,9 +8,7 @@
              Title="AlbumDetails">
 
 
-    <ContentPage.BindingContext>
-        <vm:HomeViewModel/>
-    </ContentPage.BindingContext>
+ 
 
     <pv:PancakeView HasShadow="True" CornerRadius="0,0,0,0"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundGradientAngle="180">
 
@@ -29,11 +27,12 @@
 
             <pv:PancakeView Grid.Row="0"  BackgroundColor="Transparent" HeightRequest="350" WidthRequest="350"  CornerRadius="10,10,10,10" HorizontalOptions="Center" VerticalOptions="Center" 
                             Margin="0,5,0,0">
-                <Image Source="karma.jpg" Aspect="AspectFill" HeightRequest="350" WidthRequest="350" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Image  Source="{Binding artists[0].ımages[0].url}" Aspect="AspectFill" HeightRequest="350" WidthRequest="350" HorizontalOptions="Center" VerticalOptions="Center"/>
             </pv:PancakeView>
 
-            <CollectionView Grid.Row="1" Margin="20,0" ItemsSource="{Binding MusicList}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
-                            SelectionMode="Single" SelectedItem="{Binding SelectedMusic}" SelectionChangedCommand="{Binding SelectionCommand}">
+            <CollectionView Grid.Row="1" Margin="20,0" ItemsSource="{Binding Track}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                            SelectionMode="Single" SelectedItem="{Binding SelectedTrack}" SelectionChangedCommand="{Binding SelectionCommand}">
+
                 <!--<CollectionView.Header>
                     <Label Text="All Songs" TextColor="Black" Opacity="0.5" Margin="15,10"/>
                 </CollectionView.Header>-->
@@ -42,6 +41,7 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
+                        
                         <Grid BackgroundColor="Transparent" Padding="15,10" HorizontalOptions="FillAndExpand" >
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
@@ -69,11 +69,11 @@
                             </VisualStateManager.VisualStateGroups>
 
 
-                            <Label Grid.Column="0" Grid.RowSpan="2" Text="1" TextColor="Black" FontSize="17" Opacity="0.5" Margin="0,0,20,0"/>
-                            <Label Grid.Column="1" Grid.Row="0" Text="{Binding Title}" TextColor="Black" FontSize="17"/>
-                                <Label Grid.Column="1"  Grid.Row="1 " Text="{Binding Artist}" TextColor="Black" FontSize="12" Opacity="0.5"/>
-                            <Label Grid.Column="2" Text="04:00" TextColor="Black" FontSize="17" Opacity="0.5"/>
-                            
+                            <Label Grid.Column="0" Grid.RowSpan="2" Text="{Binding TrackNumber}" TextColor="Black" FontSize="17" Opacity="0.5" Margin="0,0,20,0"/>
+                            <Label Grid.Column="1" Grid.Row="0" Text="{Binding Name}" TextColor="Black" FontSize="17"/>
+                            <Label Grid.Column="1"  Grid.Row="1 " Text="{Binding Artists[0].Name}" TextColor="Black" FontSize="12" Opacity="0.5"/>
+                            <Label Grid.Column="2"  Text="{Binding DurationMs}" FontSize="17" Opacity="0.5"/>
+
                             <!--<pv:PancakeView HasShadow="True" HeightRequest="40" WidthRequest="40" CornerRadius="20" HorizontalOptions="End" VerticalOptions="Center" 
                                             BackgroundGradientAngle="180">
                                 <pv:PancakeView.BackgroundGradientStops>

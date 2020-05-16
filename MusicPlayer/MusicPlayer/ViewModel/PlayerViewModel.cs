@@ -1,23 +1,70 @@
 ﻿using MediaManager;
 using MusicPlayer.Models;
+using MusicPlayer.Services.Account;
+using MusicPlayer.Services.Provider;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace MusicPlayer.ViewModel
 {
+
     public class PlayerViewModel : BaseViewModel
     {
-        public PlayerViewModel(Song selectedMusic, ObservableCollection<Song> musicList)
+        private Track selectedTrack;
+        public Track SelectedTrack
         {
-            this.selectedMusic = selectedMusic;
-            this.musicList = musicList;
-            PlayMusic(selectedMusic);
+            get { return selectedTrack; }
+            set
+            {
+                selectedTrack = value;
+                OnPropertyChanged();
+            }
+        }
+        private readonly IProviderService _providerService;
+        private readonly IAccountService _accountService;
+        public PlayerViewModel(IProviderService providerService, IAccountService accountService,Track selectedTrack, IList<Track> Track)
+        {
+            _providerService = providerService;
+            _accountService = accountService;
+
+            this.selectedTrack = selectedTrack;
+            this.Track = Track;
+           // Task.Run(GetTrack);
+            PlayMusic(selectedTrack);
             isPlaying = true;
+        }
+
+        public async Task GetTrack()
+        {
+            var tracks = await _providerService.Get<Track>($"https://api.spotify.com/v1/tracks/{selectedTrack.Id}");
+
+            selectedTrack = tracks;
+            //   Track.Add(tracks);
+
+
+        }
+
+
+        private IList<Track> _track;
+        public IList<Track> Track
+        {
+            get
+            {
+                if (_track == null)
+                    _track = new ObservableCollection<Track>();
+                return _track;
+            }
+            set
+            {
+                _track = value;
+            }
         }
 
         #region Properties
@@ -80,6 +127,7 @@ namespace MusicPlayer.ViewModel
         }
 
 
+
         private bool isPlaying;
         public bool IsPlaying
         {
@@ -124,10 +172,10 @@ namespace MusicPlayer.ViewModel
                 NextMusic();
         }
 
-        private async void PlayMusic(Song music)
+        private async void PlayMusic(Track music)
         {
             var mediaInfo = CrossMediaManager.Current;
-            await mediaInfo.Play(music?.Url);
+            await mediaInfo.Play(music?.PreviewUrl);
             IsPlaying = true;
 
             mediaInfo.MediaItemFinished += (sender, args) =>
@@ -147,23 +195,23 @@ namespace MusicPlayer.ViewModel
 
         private void NextMusic()
         {
-            var currentIndex = musicList.IndexOf(selectedMusic);
+            var currentIndex = Track.IndexOf(selectedTrack);
 
-            if (currentIndex < musicList.Count - 1)
+            if (currentIndex < Track.Count - 1)
             {
-                SelectedMusic = musicList[currentIndex + 1];
-                PlayMusic(selectedMusic);
+                SelectedTrack = Track[currentIndex + 1];
+                PlayMusic(selectedTrack);
             }
         }
 
         private void PreviousMusic()
         {
-            var currentIndex = musicList.IndexOf(selectedMusic);
+            var currentIndex = Track.IndexOf(selectedTrack);
 
             if (currentIndex > 0)
             {
-                SelectedMusic = musicList[currentIndex - 1];
-                PlayMusic(selectedMusic);
+                SelectedTrack = Track[currentIndex - 1];
+                PlayMusic(selectedTrack);
             }
         }
     }

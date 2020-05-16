@@ -1,22 +1,36 @@
-﻿
-using MusicPlayer.Views;
-using System;
-using Xamarin.Essentials;
+﻿using MusicPlayer.Views;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+using System.Reflection;
+using Xamarin.Forms;
+using Autofac;
+using MusicPlayer.Services;
 
 namespace MusicPlayer
 {
     public partial class App : Application
     {
+        public static IContainer _container;
         public App()
         {
             InitializeComponent();
+            var builder = new ContainerBuilder();
 
+            builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
+               .Where(t => t.Namespace.Contains("ViewModels"));
 
-            // MainPage =new AppShell();
-            MainPage =  new AppShell();
+            builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
+                   .AssignableTo<IServiceBase>()
+                   .AsImplementedInterfaces()
+                   .SingleInstance();
 
+            if (_container != null)
+            {
+                _container.Dispose();
+            }
+            _container = builder.Build();
+
+            //MainPage = new deneme();
+            MainPage = new AppShell();
         }
 
         protected override void OnStart()

@@ -15,5 +15,6 @@ namespace MusicPlayer.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
+
     }
 }

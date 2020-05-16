@@ -88,7 +88,7 @@
             <StackLayout Grid.Row="1" Spacing="25" HorizontalOptions="Center" VerticalOptions="Center">
                 <pv:PancakeView HasShadow="True" BackgroundColor="#7175D8" HeightRequest="250" WidthRequest="250" CornerRadius="10" HorizontalOptions="Center" VerticalOptions="Center" >
                     <pv:PancakeView BackgroundColor="#7175D8" HeightRequest="248" WidthRequest="248" CornerRadius="10" HorizontalOptions="Center" VerticalOptions="Center">
-                        <Image Source="{Binding SelectedMusic.AlbumImageUri}" Aspect="AspectFill" HeightRequest="250" WidthRequest="250" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Image Source="{Binding SelectedTrack.Album.items[0].images.url}" Aspect="AspectFill" HeightRequest="250" WidthRequest="250" HorizontalOptions="Center" VerticalOptions="Center"/>
                     </pv:PancakeView>
                 </pv:PancakeView>
                
@@ -100,8 +100,8 @@
 
             <StackLayout Grid.Row="2" HorizontalOptions="Center">
                 <StackLayout>
-                    <Label Text="{Binding SelectedMusic.Title}" TextColor="Black" FontSize="25" HorizontalOptions="Center"/>
-                    <Label Text="{Binding SelectedMusic.Artist}" TextColor="#7175D8" FontSize="15" Opacity="0.5" HorizontalOptions="Center"/>
+                    <Label Text="{Binding SelectedTrack.Artists[0].Name}" TextColor="Black" FontSize="25" HorizontalOptions="Center"/>
+                    <Label Text="{Binding SelectedTrack.Name}" TextColor="#7175D8" FontSize="15" Opacity="0.5" HorizontalOptions="Center"/>
                 </StackLayout>
             </StackLayout>
 

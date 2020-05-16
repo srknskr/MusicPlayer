@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             mc:Ignorable="d"
+             x:Class="MusicPlayer.Views.ProfilePage"
+             Title="My Profile">
+
+
+    <CollectionView x:Name="artistsList" Margin="0,20,0,0"  ItemsSource="{Binding UserList}" SelectionMode="Single" 
+                        SelectedItem="{Binding SelectedAlbum}" VerticalScrollBarVisibility="Never" 
+                        SelectionChangedCommand="{Binding SelectionCommand}">
+
+        <CollectionView.ItemsLayout>
+            <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="20"  Span="1"/>
+        </CollectionView.ItemsLayout>
+
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+
+                <StackLayout  HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Transparent">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup Name="CommonStates">
+                            <VisualState Name="Normal" />
+                            <VisualState Name="Selected">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="#7175D8" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+
+
+                    <pancakeview:PancakeView HasShadow="True" BackgroundColor="#7175D8" HeightRequest="500" WidthRequest="300" CornerRadius="20" HorizontalOptions="Center" VerticalOptions="Center">
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <pancakeview:PancakeView Grid.Row="2"  BackgroundColor="Transparent" HeightRequest="200" WidthRequest="200" CornerRadius="120" HorizontalOptions="Center" VerticalOptions="Center">
+                                <Image Source="{Binding images[0].url}" Aspect="AspectFill" HeightRequest="200" WidthRequest="200" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </pancakeview:PancakeView>
+
+
+                            <Label Grid.Row="0"  Text="{Binding display_name}" TextColor="Black" FontSize="40" HorizontalOptions="CenterAndExpand"  />
+                            <Label Grid.Row="1" Text="{Binding type}" TextColor="Black" FontSize="15" Opacity="0.5" HorizontalOptions="CenterAndExpand" Margin="0,-10,0,0"/>
+                            <Label Grid.Row="3"  Text="{Binding followers.total}" TextColor="Black" FontSize="40" HorizontalOptions="CenterAndExpand"  />
+
+                            <Label Grid.Row="4" Text="Followers" TextColor="Black" FontSize="15" Opacity="0.5" HorizontalOptions="CenterAndExpand" Margin="0,-10,0,0"/>
+                            <Label Grid.Row="6" Text="Spotify ID" TextColor="Black" FontSize="15" Opacity="0.5" HorizontalOptions="CenterAndExpand" Margin="0,-10,0,0"/>
+                            
+                            <Label Grid.Row="5"  Text="{Binding id}" TextColor="Black" FontSize="20" HorizontalOptions="CenterAndExpand"  />
+
+                        </Grid>
+
+
+
+
+
+
+
+
+
+                    </pancakeview:PancakeView>
+                </StackLayout>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+        <CollectionView.Footer>
+            <Grid HeightRequest="0"/>
+        </CollectionView.Footer>
+    </CollectionView>
+
+
+</ContentPage>

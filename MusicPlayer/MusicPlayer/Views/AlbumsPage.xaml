@@ -7,25 +7,19 @@
              x:Class="MusicPlayer.Views.AlbumsPage"
              Title="Albums">
 
-    <ContentPage.BindingContext>
-        <vm:HomeViewModel/>
-    </ContentPage.BindingContext>
-    
-    
-   
-        
-        
-        
-        <CollectionView x:Name="burgerList" Margin="0,20,0,0"  ItemsSource="{Binding MusicList}" SelectionMode="Single" 
-                        SelectedItem="{Binding SelectedMusic}" VerticalScrollBarVisibility="Never" 
+
+
+
+    <CollectionView x:Name="burgerList" Margin="0,20,0,0"  ItemsSource="{Binding Items}" SelectionMode="Single" 
+                        SelectedItem="{Binding SelectedAlbum}" VerticalScrollBarVisibility="Never" 
                         SelectionChangedCommand="{Binding SelectionCommand}">
-            <CollectionView.ItemsLayout>
-                <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="20"  Span="2"/>
-            </CollectionView.ItemsLayout>
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    
-                    <!--<Grid Padding="10" BackgroundColor="pink" WidthRequest="145" HeightRequest="160">
+        <CollectionView.ItemsLayout>
+            <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="20"  Span="2"/>
+        </CollectionView.ItemsLayout>
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+
+                <!--<Grid Padding="10" BackgroundColor="pink" WidthRequest="145" HeightRequest="160">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="Auto"/>
@@ -37,7 +31,7 @@
                         <Label Grid.Row="1" Text="{Binding Artist}" TextColor="White" FontFamily="ThemeFont"
                                VerticalOptions="End" HorizontalOptions="End"/>
                     </Grid>-->
-                    <StackLayout  HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Transparent">
+                <StackLayout  HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Transparent">
                     <VisualStateManager.VisualStateGroups>
                         <VisualStateGroup Name="CommonStates">
                             <VisualState Name="Normal" />
@@ -52,12 +46,27 @@
 
                     <pancakeview:PancakeView HasShadow="True" BackgroundColor="#7175D8" HeightRequest="200" WidthRequest="150" CornerRadius="10" HorizontalOptions="Center" VerticalOptions="Center">
 
-                            <Grid>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <pancakeview:PancakeView Grid.Row="0" Grid.RowSpan="3" Grid.ColumnSpan="3" BackgroundColor="Transparent" HeightRequest="400" WidthRequest="250" CornerRadius="10,10,0,0" HorizontalOptions="Center" VerticalOptions="Center">
+                                <Image Source="{Binding images[0].url}" Aspect="AspectFill" HeightRequest="200" WidthRequest="200" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </pancakeview:PancakeView>
+
+                            <Grid Grid.Row="3" Grid.ColumnSpan="3">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
@@ -65,57 +74,41 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <pancakeview:PancakeView Grid.Row="0" Grid.RowSpan="3" Grid.ColumnSpan="3" BackgroundColor="Transparent" HeightRequest="400" WidthRequest="250" CornerRadius="10,10,0,0" HorizontalOptions="Center" VerticalOptions="Center">
-                                <Image Source="karma.jpg" Aspect="AspectFill" HeightRequest="200" WidthRequest="200" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                </pancakeview:PancakeView>
-                            
-                            <Grid Grid.Row="3" Grid.ColumnSpan="3">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
+                                <Label Grid.Row="0" Grid.ColumnSpan="3" Text="{Binding name}" TextColor="Black" FontSize="15" HorizontalOptions="StartAndExpand" Margin="8,0,0,0"/>
+                                <Label Grid.Row="1" Grid.ColumnSpan="3" Text="{Binding type}" TextColor="Black" FontSize="10" Opacity="0.5"  HorizontalOptions="StartAndExpand" Margin="8,-5,0,0"/>
 
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-
-                                    </Grid.ColumnDefinitions>
-
-                                    <Label Grid.Row="0" Grid.ColumnSpan="3" Text="{Binding Title}" TextColor="Black" FontSize="10" HorizontalOptions="StartAndExpand" Margin="8,0,0,0"/>
-                                    <Label Grid.Row="1" Grid.ColumnSpan="3" Text="{Binding Artist}" TextColor="Black" FontSize="10" Opacity="0.5"  HorizontalOptions="StartAndExpand" Margin="8,-5,0,0"/>
-
-                                    <pancakeview:PancakeView Grid.Column="3" Grid.RowSpan="2" HasShadow="False" HeightRequest="50" WidthRequest="50" HorizontalOptions="End" 
+                                <pancakeview:PancakeView Grid.Column="3" Grid.RowSpan="2" HasShadow="False" HeightRequest="50" WidthRequest="50" HorizontalOptions="End" 
                             VerticalOptions="Center" BackgroundGradientAngle="180" Margin="0,0,8,0" >
-                                        <pancakeview:PancakeView.BackgroundGradientStops>
-                                            <pancakeview:GradientStopCollection>
-                                                <pancakeview:GradientStop Color="Transparent" Offset="0" />
-                                                <pancakeview:GradientStop Color="Transparent" Offset="1" />
-                                            </pancakeview:GradientStopCollection>
-                                        </pancakeview:PancakeView.BackgroundGradientStops>
-                                        <pancakeview:PancakeView.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding BackCommand}"/>
-                                        </pancakeview:PancakeView.GestureRecognizers>
-                                        <Image Source="like2.png" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                    </pancakeview:PancakeView>
-                                </Grid>
-
-
-
-
-
-
-
+                                    <pancakeview:PancakeView.BackgroundGradientStops>
+                                        <pancakeview:GradientStopCollection>
+                                            <pancakeview:GradientStop Color="Transparent" Offset="0" />
+                                            <pancakeview:GradientStop Color="Transparent" Offset="1" />
+                                        </pancakeview:GradientStopCollection>
+                                    </pancakeview:PancakeView.BackgroundGradientStops>
+                                    <pancakeview:PancakeView.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                                    </pancakeview:PancakeView.GestureRecognizers>
+                                    <Image Source="like2.png" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                </pancakeview:PancakeView>
                             </Grid>
 
-                        </pancakeview:PancakeView>
-                    </StackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-            <CollectionView.Footer>
-                <Grid HeightRequest="0"/>
-            </CollectionView.Footer>
-        </CollectionView>
-    
+
+
+
+
+
+
+                        </Grid>
+
+                    </pancakeview:PancakeView>
+                </StackLayout>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+        <CollectionView.Footer>
+            <Grid HeightRequest="0"/>
+        </CollectionView.Footer>
+    </CollectionView>
+
+
 
 </ContentPage>

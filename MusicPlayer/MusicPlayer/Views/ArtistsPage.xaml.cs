@@ -14,12 +14,13 @@ using Xamarin.Forms.Xaml;
 namespace MusicPlayer.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AlbumDetailsPage : ContentPage
+    public partial class ArtistsPage : ContentPage
     {
-        public AlbumDetailsPage()
+        public ArtistsPage()
         {
             InitializeComponent();
-           
+            this.BindingContext = new ArtistsViewModel(App._container.Resolve<IProviderService>(),
+                       App._container.Resolve<IAccountService>());
         }
     }
 }

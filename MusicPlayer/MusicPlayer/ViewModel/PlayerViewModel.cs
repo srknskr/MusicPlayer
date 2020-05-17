@@ -147,7 +147,7 @@ namespace MusicPlayer.ViewModel
         public ICommand PlayCommand => new Command(Play);
         public ICommand ChangeCommand => new Command(ChangeMusic);
         public ICommand BackCommand => new Command(() => Application.Current.MainPage.Navigation.PopAsync());
-        public ICommand ShareCommand => new Command(() => Share.RequestAsync(selectedMusic.Url, selectedMusic.Title));
+        public ICommand ShareCommand => new Command(() => Share.RequestAsync(selectedTrack.PreviewUrl));
 
 
         private async void Play()

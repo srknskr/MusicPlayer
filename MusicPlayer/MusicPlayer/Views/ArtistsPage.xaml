@@ -9,7 +9,7 @@
 
 
     <CollectionView x:Name="artistsList" Margin="0,20,0,0"  ItemsSource="{Binding ArtistsList}" SelectionMode="Single" 
-                        SelectedItem="{Binding SelectedAlbum}" VerticalScrollBarVisibility="Never" 
+                        SelectedItem="{Binding SelectedArtist}" VerticalScrollBarVisibility="Never" 
                         SelectionChangedCommand="{Binding SelectionCommand}">
 
         <CollectionView.ItemsLayout>
@@ -42,12 +42,12 @@
                             </Grid.RowDefinitions>
 
                             <pancakeview:PancakeView Grid.Row="0"  BackgroundColor="Transparent" HeightRequest="120" WidthRequest="120" CornerRadius="120" HorizontalOptions="Center" VerticalOptions="Center">
-                                <Image Source="{Binding Images[0].url}" Aspect="AspectFill" HeightRequest="120" WidthRequest="120" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Image Source="{Binding images[0].url}" Aspect="AspectFill" HeightRequest="120" WidthRequest="120" HorizontalOptions="Center" VerticalOptions="Center"/>
                             </pancakeview:PancakeView>
 
 
-                            <Label Grid.Row="1"  Text="{Binding Name}" TextColor="Black" FontSize="25" HorizontalOptions="CenterAndExpand"  />
-                            <Label Grid.Row="2" Text="{Binding Type}" TextColor="Black" FontSize="15" Opacity="0.5" HorizontalOptions="CenterAndExpand" Margin="0,-10,0,0"/>
+                            <Label Grid.Row="1"  Text="{Binding name}" TextColor="Black" FontSize="25" HorizontalOptions="CenterAndExpand"  />
+                            <Label Grid.Row="2" Text="{Binding type}" TextColor="Black" FontSize="15" Opacity="0.5" HorizontalOptions="CenterAndExpand" Margin="0,-10,0,0"/>
                             
                         </Grid>
 

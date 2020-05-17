@@ -2,13 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:vm="clr-namespace:MusicPlayer.ViewModel" xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              mc:Ignorable="d"
-             x:Class="MusicPlayer.Views.AlbumDetailsPage"
-             Title="AlbumDetails">
-
-
- 
+             x:Class="MusicPlayer.Views.ArtistDetailsPage">
+    
+    
 
     <pv:PancakeView HasShadow="True" CornerRadius="0,0,0,0"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundGradientAngle="180">
 
@@ -40,6 +38,7 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
+
                         
                         <Grid BackgroundColor="Transparent" Padding="15,10" HorizontalOptions="FillAndExpand" >
                             <Grid.RowDefinitions>
@@ -85,11 +84,14 @@
                             </pv:PancakeView>-->
                         </Grid>
                     </DataTemplate>
+                    
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            
-            
+
+
         </Grid>
     </pv:PancakeView>
+
+
 
 </ContentPage>

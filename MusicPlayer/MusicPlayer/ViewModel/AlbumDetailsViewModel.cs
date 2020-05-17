@@ -15,6 +15,20 @@ namespace MusicPlayer.ViewModel
 {
     public class AlbumDetailsViewModel : BaseViewModel
     {
+        private IList<Item> _items;
+        public IList<Item> Items
+        {
+            get
+            {
+                if (_items == null)
+                    _items = new ObservableCollection<Item>();
+                return _items;
+            }
+            set
+            {
+                _items = value;
+            }
+        }
 
         private Track selectedTrack;
         public Track SelectedTrack
@@ -82,12 +96,12 @@ namespace MusicPlayer.ViewModel
             foreach (var item in playlist.Items)
             {
                 Track.Add(item.Track);
-               
+              //  Items.Add(item.Track.Album.items[0]);
             }
         }
-            
-        
-       
+
+
+
 
         public ICommand SelectionCommand => new Command(PlayMusic);
 
@@ -99,7 +113,7 @@ namespace MusicPlayer.ViewModel
             App._container.Resolve<IAccountService>(), selectedTrack, Track);
                 var playerPage = new PlayerPage { BindingContext = viewModel };
 
-              //  var infoPage = new InfoPage();
+                //  var infoPage = new InfoPage();
 
                 //var navigation = Application.Current.MainPage as NavigationPage;
                 //navigation.PushAsync(playerPage, true);

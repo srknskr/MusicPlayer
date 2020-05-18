@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\10008-music-note-character.json" />
+    <AndroidAsset Include="Assets\lf30_editor_ggPm1w.json" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />

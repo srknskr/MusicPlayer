@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/animation_view"
-        app:lottie_fileName="10008-music-note-character.json" 
+        app:lottie_fileName="lf30_editor_ggPm1w.json" 
         app:lottie_autoPlay="true"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"

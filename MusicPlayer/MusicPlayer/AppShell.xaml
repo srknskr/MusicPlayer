@@ -38,17 +38,16 @@
                 <local1:HomePage />
             </ShellContent>
         </Tab>-->
-        
-       
-        
-        <Tab Title="Artists" Icon="microphone.png">
-            <ShellContent>
-                <local1:ArtistsPage />
-            </ShellContent>
-        </Tab>
+
+
         <Tab Title="Albums" Icon="disc.png">
             <ShellContent>
                 <local1:AlbumsPage />
+            </ShellContent>
+        </Tab>
+        <Tab Title="Artists" Icon="singer.png">
+            <ShellContent>
+                <local1:ArtistsPage />
             </ShellContent>
         </Tab>
         <Tab Title="Profile" Icon="user.png">

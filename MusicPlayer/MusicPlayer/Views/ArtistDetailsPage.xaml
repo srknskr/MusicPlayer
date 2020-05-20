@@ -4,7 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              mc:Ignorable="d"
-             x:Class="MusicPlayer.Views.ArtistDetailsPage">
+             x:Class="MusicPlayer.Views.ArtistDetailsPage"
+             Title="Artist Top Tracks">
     
     
 

@@ -107,7 +107,7 @@
 
 
 
-            <StackLayout WidthRequest="250"  Grid.Row="3" HorizontalOptions="Center">
+            <StackLayout WidthRequest="325"  Grid.Row="3" HorizontalOptions="Center">
                 
                 <Grid HorizontalOptions="FillAndExpand">
                     

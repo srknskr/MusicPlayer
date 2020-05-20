@@ -32,7 +32,7 @@ namespace MusicPlayer.ViewModel
         public async Task GetArtists()
         {
             await GetToken();
-            var artists = await _providerService.Get<SeveralArtist>($"https://api.spotify.com/v1/artists?ids=4li4dx5mFgZlMVeHlARBHP%2C2yMN0IP20GOaN6q0p0zL5k%2C0oSGxfWSnnOXhD2fKuz2Gy%2C3dBVyJ7JuOMt4GE9607Qin");
+            var artists = await _providerService.Get<SeveralArtist>($"https://api.spotify.com/v1/artists?ids=5nxcBdJcaohXiCIMuQd200%2C0EmeFodog0BfCgMzAIvKQp%2C4li4dx5mFgZlMVeHlARBHP%2C2yMN0IP20GOaN6q0p0zL5k%2C0oSGxfWSnnOXhD2fKuz2Gy%2C3dBVyJ7JuOMt4GE9607Qin");
             foreach (var item in artists.artists)
                 ArtistsList.Add(item);
             

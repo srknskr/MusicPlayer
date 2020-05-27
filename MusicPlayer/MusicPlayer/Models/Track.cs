@@ -8,7 +8,7 @@ namespace MusicPlayer.Models
     public class Track
     {
         [JsonProperty("album")]
-        public Album Album { get; set; }
+        public Album55 Album { get; set; }
 
         [JsonProperty("artists")]
         public Artist[] Artists { get; set; }

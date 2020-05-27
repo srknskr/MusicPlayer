@@ -29,14 +29,14 @@ namespace MusicPlayer.ViewModel
         }
         private readonly IProviderService _providerService;
         private readonly IAccountService _accountService;
-        public PlayerViewModel(IProviderService providerService, IAccountService accountService,Track selectedTrack, IList<Track> Track)
+        public PlayerViewModel(IProviderService providerService, IAccountService accountService, Track selectedTrack, IList<Track> Track)
         {
             _providerService = providerService;
             _accountService = accountService;
 
             this.selectedTrack = selectedTrack;
             this.Track = Track;
-           // Task.Run(GetTrack);
+            // Task.Run(GetTrack);
             PlayMusic(selectedTrack);
             isPlaying = true;
         }
@@ -142,11 +142,26 @@ namespace MusicPlayer.ViewModel
 
         public string PlayIcon { get => isPlaying ? "pause.png" : "play.png"; }
 
+        private bool isMute;
+        public bool IsMute
+        {
+            get { return isMute; }
+            set
+            {
+                isMute = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(MuteIcon));
+            }
+        }
+
+        public string MuteIcon { get => isMute ? "mute.png" : "volume.png"; }
+
         #endregion
 
         public ICommand PlayCommand => new Command(Play);
         public ICommand ChangeCommand => new Command(ChangeMusic);
-        public ICommand BackCommand => new Command(() => Application.Current.MainPage.Navigation.PopAsync());
+        //public ICommand BackCommand => new Command(() => Application.Current.MainPage.Navigation.PopAsync());
+        public ICommand MuteCommand => new Command(Mute);
         public ICommand ShareCommand => new Command(() => Share.RequestAsync(selectedTrack.PreviewUrl));
 
 
@@ -161,6 +176,19 @@ namespace MusicPlayer.ViewModel
             {
                 await CrossMediaManager.Current.Play();
                 IsPlaying = true; ;
+            }
+        }
+        private  void Mute()
+        {
+            if (isMute)
+            {
+                CrossMediaManager.Current.Volume.Muted = false;
+                IsMute = false; ;
+            }
+            else
+            {
+                CrossMediaManager.Current.Volume.Muted = true;
+                IsMute = true; ;
             }
         }
 

@@ -71,7 +71,7 @@
                             <Label Grid.Column="0" Grid.RowSpan="2" Text="{Binding TrackNumber}" TextColor="Black" FontSize="17" Opacity="0.5" Margin="0,0,20,0"/>
                             <Label Grid.Column="1" Grid.Row="0" Text="{Binding Name}" TextColor="Black" FontSize="17"/>
                             <Label Grid.Column="1"  Grid.Row="1 " Text="{Binding Artists[0].Name}" TextColor="Black" FontSize="12" Opacity="0.5"/>
-                            <Label Grid.Column="2"  Text="{Binding DurationMs}" FontSize="17" Opacity="0.5"/>
+                            <Label Grid.Column="2"  Text="{Binding Popularity}" FontSize="17" Opacity="0.5"/>
 
                             <!--<pv:PancakeView HasShadow="True" HeightRequest="40" WidthRequest="40" CornerRadius="20" HorizontalOptions="End" VerticalOptions="Center" 
                                             BackgroundGradientAngle="180">

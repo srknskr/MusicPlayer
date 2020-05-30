@@ -91,7 +91,6 @@
                         <Image Source="{Binding SelectedTrack.Album.images[0].url}" Aspect="AspectFill" HeightRequest="250" WidthRequest="250" HorizontalOptions="Center" VerticalOptions="Center"/>
                     </pv:PancakeView>
                 </pv:PancakeView>
-               
             </StackLayout>
 
 
@@ -100,8 +99,8 @@
 
             <StackLayout Grid.Row="2" HorizontalOptions="Center">
                 <StackLayout>
-                    <Label Text="{Binding SelectedTrack.Artists[0].Name}" TextColor="Black" FontSize="25" HorizontalOptions="Center"/>
-                    <Label Text="{Binding SelectedTrack.Name}" TextColor="#7175D8" FontSize="15" Opacity="0.5" HorizontalOptions="Center"/>
+                    <Label Text="{Binding SelectedTrack.Name}" TextColor="Black" FontSize="25" HorizontalOptions="Center"/>
+                    <Label Text="{Binding SelectedTrack.Artists[0].Name}" TextColor="#7175D8" FontSize="15" Opacity="0.5" HorizontalOptions="Center"/>
                 </StackLayout>
             </StackLayout>
 

@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:vm="clr-namespace:MusicPlayer.ViewModel" xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              mc:Ignorable="d"
              x:Class="MusicPlayer.Views.AlbumDetailsPage"
-             Title="AlbumDetails">
+             Title="Album Details">
 
 
  
@@ -71,7 +71,12 @@
                             <Label Grid.Column="0" Grid.RowSpan="2" Text="{Binding TrackNumber}" TextColor="Black" FontSize="17" Opacity="0.5" Margin="0,0,20,0"/>
                             <Label Grid.Column="1" Grid.Row="0" Text="{Binding Name}" TextColor="Black" FontSize="17"/>
                             <Label Grid.Column="1"  Grid.Row="1 " Text="{Binding Artists[0].Name}" TextColor="Black" FontSize="12" Opacity="0.5"/>
-                            <Label Grid.Column="2"  Text="{Binding DurationMs}" FontSize="17" Opacity="0.5"/>
+                            <!--<Label Grid.Column="2"  Text="{Binding DurationMs}" FontSize="17" Opacity="0.5"/>-->
+                                <pv:PancakeView Grid.Column="2" Grid.RowSpan="2"  HasShadow="True" BackgroundColor="#7175D8" HeightRequest="55" WidthRequest="55" CornerRadius="10" HorizontalOptions="Center" VerticalOptions="Center" >
+                                <pv:PancakeView BackgroundColor="#7175D8" HasShadow="True" HeightRequest="55" WidthRequest="55" CornerRadius="10" HorizontalOptions="Center" VerticalOptions="Center">
+                                        <Image Source="{Binding Album.images[0].url}" Aspect="AspectFill" HeightRequest="55" WidthRequest="55" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    </pv:PancakeView>
+                                </pv:PancakeView>
 
                             <!--<pv:PancakeView HasShadow="True" HeightRequest="40" WidthRequest="40" CornerRadius="20" HorizontalOptions="End" VerticalOptions="Center" 
                                             BackgroundGradientAngle="180">

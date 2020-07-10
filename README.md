@@ -7,3 +7,5 @@ Spotify API -> https://developer.spotify.com/ </br>
 LottieAnimation Plugin -> https://github.com/airbnb/lottie-android
 
 <img src="/Screenshots/1.png">
+<img src="/Screenshots/xamarin_musicplayer.gif">
+

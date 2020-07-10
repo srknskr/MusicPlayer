@@ -6,7 +6,10 @@ PancakeView Plugin -> https://github.com/sthewissen/Xamarin.Forms.PancakeView </
 Spotify API -> https://developer.spotify.com/ </br>
 LottieAnimation Plugin -> https://github.com/airbnb/lottie-android
 
-<img src="/Screenshots/xamarin_musicplayer.gif" alt="Gif of MusicPlayer app">
+<img src="/Screenshots/xamarin_musicplayer.gif" alt="Gif of MusicPlayer app"   display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;>
 
 <img src="/Screenshots/1.png" alt="screenshots of MusicPlayer app">
 

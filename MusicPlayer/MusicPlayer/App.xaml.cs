@@ -29,7 +29,7 @@ namespace MusicPlayer
             }
             _container = builder.Build();
 
-            //MainPage = new deneme();
+
             MainPage = new AppShell();
         }
 

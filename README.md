@@ -205,9 +205,16 @@ Open `MusicPlayer.sln`, select `MusicPlayer.Android` or `MusicPlayer.iOS` as the
 
 ### Spotify configuration
 
-The current `AccountService` embeds a Spotify client ID and client secret directly in the mobile source. Those committed credentials must be considered exposed and should be revoked and rotated.
+The previously committed Spotify client ID and client secret have been removed from
+`AccountService`. For a local legacy build, the service reads
+`SPOTIFY_CLIENT_ID` and `SPOTIFY_CLIENT_SECRET` from the process environment and
+fails explicitly when either value is missing. Any historical credentials must
+still be considered exposed and should be revoked and rotated in the Spotify
+developer dashboard.
 
-Do not add replacement client secrets to the application. A mobile binary cannot protect a client secret. A secure redesign should either:
+Do not hard-code replacement credentials or distribute a mobile build containing a
+client secret. A mobile binary cannot protect it. A maintained redesign should
+either:
 
 - obtain app-only tokens through a trusted backend, or
 - use a Spotify-supported user authorization flow designed for public clients, such as Authorization Code with PKCE
@@ -236,7 +243,7 @@ The documentation audit attempted a full NuGet restore with Mono 6.12 and MSBuil
 ## Limitations
 
 - Xamarin.Forms and its platform toolchains are retired
-- a Spotify client secret is committed in the mobile source
+- the legacy client-credentials flow still requires a developer-only secret at runtime and is not suitable for a distributed mobile application
 - the app uses fixed Spotify user and artist identifiers rather than user-driven discovery
 - token expiry and refresh are not explicitly managed
 - network calls have no cancellation, retry, HTTP status handling, or user-facing error state
